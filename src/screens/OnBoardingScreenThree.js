@@ -36,7 +36,7 @@ export default class OnBoardingScreenThree extends Component<Props> {
             marginTop: 150,
             justifyContent: 'center', alignItems: 'center'
           }} />
-          <Image source={require('../images/VectorIcons/home-third-icon.png')} style={{
+          <Image source={require('../images/VectorIcons/onboard-third-icon.png')} style={{
             width: 45, height: 45,
             marginTop: 150,
             justifyContent: 'center', alignItems: 'center'

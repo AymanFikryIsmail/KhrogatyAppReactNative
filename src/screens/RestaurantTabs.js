@@ -10,7 +10,7 @@ export default class RestaurantTabs extends Component {
   render() {
     return (
       <Container>
-        <MyHeader title="Rest Cafe" home="2" />
+        <MyHeader title="Rest && Coffe Shops" home="1" />
         <Tabs tabBarUnderlineStyle={{borderBottomWidth:2 , borderColor:"green"}}>
       {/*   <Tab heading={ <TabHeading><Icon name="camera" /><Text>Camera</Text></TabHeading>}> */}
           <Tab heading="All" tabStyle={{backgroundColor: 'white'}} textStyle={{color: '#777'}} 

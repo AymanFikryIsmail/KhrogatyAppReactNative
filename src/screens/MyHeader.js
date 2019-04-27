@@ -16,22 +16,19 @@ import { withNavigation } from 'react-navigation';
 type Props = {};
 export class MyHeader extends Component<Props> {
 
-    state = { title: this.props.title }
+    state = { title: this.props.title , home:this.props.home}
     render() {
         return (
             <View style={{ backgroundColor: '#eee' }}>
  <ImageBackground source={require('../images/Backgrounds/theme-header.png')} style={{width: "100%", height: 80 ,
       flexDirection: 'row' }}>
         <StatusBar  hidden={false} barStyle="light-content" backgroundColor="transparent" translucent={true}/>
-        <Button transparent onPress={() => { this.props.navigation.goBack() }} style={{ marginTop:30,
-           color:"#fff"}}>
-                    <Icon name='arrow-back' />
-                </Button>
+       {this.backButton()}
    <Text style={{
             color: "#fff",
              fontSize: 20,
             marginTop:40,
-            marginLeft:10
+            marginLeft:20
           }}>
          {this.state.title} </Text>
       
@@ -43,11 +40,12 @@ export class MyHeader extends Component<Props> {
 
     backButton() {
 
-        if (this.props.title=="home") {
+        if (this.props.home!="1") {
             return (
-                <Button transparent onPress={() => { this.props.navigation.goBack() }}>
-                    <Icon name='arrow-back' />
-                </Button>
+                <Button transparent onPress={() => { this.props.navigation.goBack() }} style={{ marginTop:30,
+                    color:"#fff"}}>
+                             <Icon name='arrow-back' />
+                         </Button>
             )
         } 
     }

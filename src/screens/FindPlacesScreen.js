@@ -39,8 +39,8 @@ console.log(responseJson);
   render() {
     return (
       <Container >
-        <MyHeader title="Search" home="2" />
-        <Content>
+        <MyHeader title="Find Places" home="1" />
+        <Content style={{marginHorizontal:2 ,}}>
       {this.returnData()}
 </Content>
 </Container>
@@ -63,19 +63,23 @@ console.log(responseJson);
    return(  
      this.state.dataSource.map((mapData)=>{
    return(
-     <Card key={mapData.id} style={{ marginHorizontal:10 , flex: 1 , borderRadius:10 }} >
-     <CardItem button 
-           onPress={() => {
-             this.props.navigation.navigate('TopDetailNavigator', {
-               title: mapData.title.rendered,
-               content:mapData.content.rendered,
-               image:mapData.better_featured_image.source_url,
-                id: mapData.id
-             });
-           }}
-         >
+     <Card key={mapData.id} style={{  borderRadius:10 }} >
+       <CardItem button
+                onPress={() => {
+                  this.props.navigation.navigate('TopDetailscreen', {
+                    title: mapData.title.rendered,
+                    content: mapData.content.rendered,
+                    image: mapData.better_featured_image.source_url,
+                    id: mapData.id,
+                    address: mapData.acf.address,
+                    phone_number: mapData.acf.phone_number,
+                    email_address: mapData.acf.email_address
+                  }); 
+                }}
+                style={{ borderRadius:10 }}
+              >
      <Left style={{ flex: 1 }}>
-       <Image source={{uri:mapData.better_featured_image.source_url}} style={{ height: 120, flex: 1 , borderRadius:10 }} />
+       <Image source={{uri:mapData.better_featured_image.source_url}} style={{ height: 120, flex: 1,   borderRadius:10 }} />
      </Left>
      <Body style={{ flex: 3, marginLeft: 10 }}>
         <Text style={{  fontSize: 10, color: "#000" }}>{mapData.title.rendered}</Text>
@@ -86,12 +90,19 @@ console.log(responseJson);
           }}>
          <Image source={require('../images/Icons/map-marker.png')} style={{
             width: 15, height: 15,
-          }} />   Places For Going Out</Text>
+          }} />   {mapData.acf.address}</Text>
 
 
        <Text style={{ fontSize: 10, color: "#999", margin: 10 }}>{mapData.excerpt.rendered}</Text> 
-
-       <Button   onPress={() =>   this.props.navigation.navigate('TopDetailNavigator')} style={{ 
+       <Button onPress={() => this.props.navigation.navigate('TopDetailscreen', {
+                    title: mapData.title.rendered,
+                    content: mapData.content.rendered,
+                    image: mapData.better_featured_image.source_url,
+                    id: mapData.id,
+                    address: mapData.acf.address,
+                    phone_number: mapData.acf.phone_number,
+                    email_address: mapData.acf.email_address
+                  })} style={{ 
               backgroundColor:"green",
                height:25,
                textAlign: 'center' ,

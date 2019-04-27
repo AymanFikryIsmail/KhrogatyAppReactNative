@@ -33,10 +33,10 @@ export default class OnBoardingScreenTwo extends Component<Props> {
         }}>
           <Image source={require('../images/Logo/khrogaty-logo.png')} style={{
             width: 110, height: 110,
-            marginTop: 195,
+            marginTop: 150,
             justifyContent: 'center', alignItems: 'center'
           }} />
-          <Image source={require('../images/VectorIcons/home-second-icon.png')} style={{
+          <Image source={require('../images/VectorIcons/onboard-secondicon.png')} style={{
             width: 45, height: 45,
             marginTop: 100,
             justifyContent: 'center', alignItems: 'center'

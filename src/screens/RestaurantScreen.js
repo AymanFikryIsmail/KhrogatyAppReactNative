@@ -15,7 +15,7 @@ type Props = {};
 export default class RestaurantScreen extends Component<Props> {
   state = { title: this.props.title, isLoading: true, dataSource: [] }
   static navigationOptions = {
-    title: 'Restaurants',
+    title: 'Rest && Coffe Shops',
     header: null
   };
 
@@ -39,7 +39,7 @@ export default class RestaurantScreen extends Component<Props> {
   render() {
     return (
       <Container >
-        <Content>
+        <Content style={{marginHorizontal:2 ,}}>
           {this.returnData()}
         </Content>
       </Container>
@@ -63,7 +63,7 @@ export default class RestaurantScreen extends Component<Props> {
         this.state.dataSource.map((mapData) => {
           return (
 
-            <Card key={mapData.id} style={{ marginHorizontal: 10, flex: 1, borderRadius: 10 }} >
+            <Card key={mapData.id} style={{   borderRadius: 10 }} >
               <CardItem button
                 onPress={() => {
              
@@ -77,6 +77,7 @@ export default class RestaurantScreen extends Component<Props> {
                     email_address: mapData.acf.email_address
                   }); 
                 }}
+                style={{ borderRadius: 10 }}
               >
                 <Left style={{ flex: 1 }}>
                   <Image source={{ uri: mapData.better_featured_image.source_url }} style={{ height: 120, flex: 1, borderRadius: 10 }} />

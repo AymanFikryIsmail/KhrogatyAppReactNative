@@ -38,7 +38,7 @@ export default class OnBoardingScreenOne extends Component<Props> {
             marginTop: 150,
             justifyContent: 'center', alignItems: 'center'
           }} />
-          <Image source={require('../images/VectorIcons/home-first-icon.png')} style={{
+          <Image source={require('../images/VectorIcons/onboard-first-icon.png')} style={{
             width: 45, height: 45,
             marginTop: 150,
             justifyContent: 'center', alignItems: 'center'

@@ -21,6 +21,8 @@ import SearchScreen from './src/screens/SearchScreen'
 import ThingsToDoscreen from './src/screens/ThingsToDoscreen'
 import FindPlecesScreen from './src/screens/FindPlacesScreen'
 
+
+import DetailsTabs from './src/screens/DetailsTabs'
 import DetailScreen from './src/screens/DetailScreen'
 
 import MyHeader from './src/screens/MyHeader'
@@ -36,7 +38,7 @@ const TabScreen = createBottomTabNavigator(
     FindPlacesScreen: { screen: FindPlecesScreen },
     RestaurantScreen: { screen: RestaurantTabs ,
       navigationOptions: {
-        header: props => <MyHeader title="details" home="2" />,
+        header: props => <MyHeader title="Rest && Coffe Shops" home="1" />,
         headerStyle: {
           backgroundColor: "transparent"
         },
@@ -99,9 +101,10 @@ const AppNavigator = createStackNavigator({
     animationEnabled: true
   }
   },
-  TopDetailscreen: {screen: DetailScreen,
+  TopDetailscreen: {screen: DetailsTabs,
     navigationOptions: {
-      header: props => <MyHeader title="details" home="2" />,
+     
+      header:null,
       headerStyle: {
         backgroundColor: "transparent"
       },
