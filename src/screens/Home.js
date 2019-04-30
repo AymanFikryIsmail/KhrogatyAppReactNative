@@ -148,6 +148,9 @@ export default class Home extends Component<Props> {
         this.state.dataSource.filter(function (data) {
           return data.categories == cat;
         }).map((mapData) => {
+          const _navTitle =mapData.title.rendered;
+          const regexTitle = /(&#038;)/ig;
+          const navTitle = _navTitle.replace(regexTitle, '&');
           return (
 
             <View >
@@ -168,7 +171,9 @@ export default class Home extends Component<Props> {
                       id: mapData.id,
                       address: mapData.acf.address,
                       phone_number: mapData.acf.phone_number,
-                      email_address: mapData.acf.email_address
+                      email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                     });
                   }}
                   style={{
@@ -180,7 +185,7 @@ export default class Home extends Component<Props> {
                     }} />
                 </CardItem>
               </Card>
-              <Text style={{ fontSize: 14,  width: 130,paddingStart: 5, color: "#000" }}>{ mapData.title.rendered}</Text>
+              <Text style={{ fontSize: 14,  width: 130,paddingStart: 5, color: "#000" }}>{ navTitle}</Text>
               <Text style={{
                 width: 130,
                 color: "#999",

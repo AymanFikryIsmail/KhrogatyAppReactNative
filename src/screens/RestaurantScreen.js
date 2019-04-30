@@ -61,8 +61,10 @@ export default class RestaurantScreen extends Component<Props> {
     } else {
       return (
         this.state.dataSource.map((mapData) => {
+          const _navTitle =mapData.title.rendered;
+          const regexTitle = /(&#038;)/ig;
+          const navTitle = _navTitle.replace(regexTitle, '&');
           return (
-
             <Card key={mapData.id} style={{   borderRadius: 10 }} >
               <CardItem button
                 onPress={() => {
@@ -74,7 +76,9 @@ export default class RestaurantScreen extends Component<Props> {
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                   }); 
                 }}
                 style={{ borderRadius: 10 }}
@@ -83,9 +87,9 @@ export default class RestaurantScreen extends Component<Props> {
                   <Image source={{ uri: mapData.better_featured_image.source_url }} style={{ height: 120, flex: 1, borderRadius: 10 }} />
                 </Left>
                 <Body style={{ flex: 3, marginLeft: 10 }}>
-                  <Text style={{ fontSize: 10, color: "#000" }}>{mapData.title.rendered}</Text>
+                  <Text style={{ fontSize: 10, color: "#000" }}>{navTitle}</Text>
                   <Text style={{
-                    color: "#444",
+                    color: "green",
                     padding: 5,
                     fontSize: 10,
                   }}>
@@ -103,7 +107,9 @@ export default class RestaurantScreen extends Component<Props> {
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                   })} style={{
                     backgroundColor: "green",
                     height: 25,

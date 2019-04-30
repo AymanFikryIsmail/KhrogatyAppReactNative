@@ -73,7 +73,8 @@ console.log(responseJson);
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
                   }); 
                 }}
                 style={{ borderRadius:10 }}
@@ -84,7 +85,7 @@ console.log(responseJson);
      <Body style={{ flex: 3, marginLeft: 10 }}>
         <Text style={{  fontSize: 10, color: "#000" }}>{mapData.title.rendered}</Text>
         <Text style={{
-            color: "#444",
+            color: "green",
             padding:5,
             fontSize: 10,
           }}>
@@ -101,7 +102,9 @@ console.log(responseJson);
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                   })} style={{ 
               backgroundColor:"green",
                height:25,

@@ -16,7 +16,7 @@ import MyHeader from './MyHeader'
 
 type Props = {};
 export default class DetailScreen extends Component<Props> {
-  state = { title: this.props.title, name: "Your comment", comment: "", addingComment: 0, isLoading: true, dataSource: [] }
+  state = { title: this.props.title, name: "Your comment", comment: "Write here", addingComment: 0, isLoading: true, dataSource: [] }
 
   static navigationOptions = {
     title: 'Details',
@@ -26,8 +26,13 @@ export default class DetailScreen extends Component<Props> {
     this.getComments();
   }
   render() {
-    const navTitle = this.props.navigation.getParam('title', 'some value');
-    const content = this.props.navigation.getParam('content', 'some value');
+    const _navTitle = this.props.navigation.getParam('title', 'some value');
+    const regexTitle = /(&#038;)/ig;
+    const navTitle = _navTitle.replace(regexTitle, '&');
+    
+    const content1 = this.props.navigation.getParam('content', 'some value');
+    const regex = /(<([^>]+)>)/ig;
+    const content = content1.replace(regex, '');
     const image = this.props.navigation.getParam('image', 'some value');
     const email_address = this.props.navigation.getParam('email_address', 'some value');
     const phone_number = this.props.navigation.getParam('phone_number', 'some value');
@@ -36,9 +41,9 @@ export default class DetailScreen extends Component<Props> {
     return (
       <Container >
         <Content >
-          <Image source={{ uri: image }} style={{height: 150, width: "100%" }} />
+          <Image source={{ uri: image }} style={{ height: 150, width: "100%" }} />
           <Card style={{
-            width: '100%', borderRadius: 10, marginHorizontal:10,
+            width: '100%', borderRadius: 10, marginHorizontal: 10,
             flexDirection: 'column', justifyContent: 'center', alignItems: 'center'
           }}>
 
@@ -92,8 +97,7 @@ export default class DetailScreen extends Component<Props> {
                     paddingRight: 20,
                   }}
                   onChangeText={(name) => this.setState({ name })}
-                  value={this.state.name}
-                  placeholder='Your comment'
+                  placeholder='Write here'
                   keyboardType='web-search'
                   onSubmitEditing={() => { this.addComment() }}
                   ref='searchBar'
@@ -160,7 +164,7 @@ export default class DetailScreen extends Component<Props> {
                 marginTop: 5,
                 marginHorizontal: 5,
                 borderBottomColor: '#999',
-                borderBottomWidth: .3,
+                borderBottomWidth: .5,
               }}
             />
           </View>

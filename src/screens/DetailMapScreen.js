@@ -27,18 +27,12 @@ export default class DetailMapScreen extends Component<Props> {
   
   }
   render() {
-    const navTitle = this.props.navigation.getParam('title', 'some value');
-    const content = this.props.navigation.getParam('content', 'some value');
-    const image = this.props.navigation.getParam('image', 'some value');
-    const email_address = this.props.navigation.getParam('email_address', 'some value');
-    const phone_number = this.props.navigation.getParam('phone_number', 'some value');
-    const address = this.props.navigation.getParam('address', 'some value');
-    const id = this.props.navigation.getParam('id');
+    const map_location = this.props.navigation.getParam('map_location', 'some value');
     return (
       <Container >
         <Content >
         <WebView
-    source={{uri: 'https://www.google.com/maps/@31.2120118,29.9162827,15z'}}
+    source={{uri: map_location}}
     style={{height : 400, width : "100%"}}
   />
         </Content>

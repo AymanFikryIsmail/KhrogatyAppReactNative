@@ -58,8 +58,10 @@ export default class SearchScreen extends Component<Props> {
 
 
         </View>
-        {this.returnData()}
+        <Content style={{marginHorizontal:2 ,}}>
 
+        {this.returnData()}
+</Content>
 
       </Container>
     );
@@ -109,11 +111,11 @@ export default class SearchScreen extends Component<Props> {
     } else {
       return (
         this.state.dataSource.filter(function (data) {
-          return data.title.rendered == place;
+          return data.acf.address.includes(place);
         }).map((mapData) => {
           return (
-            <Card key={mapData.id} style={{ marginHorizontal: 10, flex: 1, borderRadius: 10 }} >
-              <CardItem button
+            <Card key={mapData.id} style={{  borderRadius:10 }} >
+            <CardItem button
                 onPress={() => {
 
                   this.props.navigation.navigate('TopDetailscreen', {
@@ -123,9 +125,12 @@ export default class SearchScreen extends Component<Props> {
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                   });
                 }}
+                style={{ borderRadius:10 }}
               >
                 <Left style={{ flex: 1 }}>
                   <Image source={{ uri: mapData.better_featured_image.source_url }} style={{ height: 120, flex: 1, borderRadius: 10 }} />
@@ -133,7 +138,7 @@ export default class SearchScreen extends Component<Props> {
                 <Body style={{ flex: 3, marginLeft: 10 }}>
                   <Text style={{ fontSize: 10, color: "#000" }}>{mapData.title.rendered}</Text>
                   <Text style={{
-                    color: "#444",
+                    color: "green",
                     padding: 5,
                     fontSize: 10,
                   }}>
@@ -151,7 +156,9 @@ export default class SearchScreen extends Component<Props> {
                     id: mapData.id,
                     address: mapData.acf.address,
                     phone_number: mapData.acf.phone_number,
-                    email_address: mapData.acf.email_address
+                    email_address: mapData.acf.email_address,
+                    map_location:mapData.acf.map_location
+
                   })} style={{
                     backgroundColor: "green",
                     height: 25,
